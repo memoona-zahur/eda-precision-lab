@@ -60,7 +60,7 @@ python -m pytest test_precision_checks.py -v   # 21/21 pass
 | 1 | Dataset shape + exact columns (600×6) | structural |
 | 2 | Generator deterministic (re-run reproduces committed SHA) | structural |
 | 3 | Study↔score relationship strong (r > 0.6) | structural |
-| 4 | Sleep↔score genuinely null (|r| < 0.10) | structural |
+| 4 | Sleep↔score genuinely null (\|r\| < 0.10) | structural |
 | 5 | Section C bonus visible (mean_C − mean_A ≈ +4) | structural |
 | 6 | All 8 PNGs exist and are valid images (PIL verify) | structural |
 | 7 | Collision pair: broken vs fixed bytes differ | structural |
@@ -68,7 +68,7 @@ python -m pytest test_precision_checks.py -v   # 21/21 pass
 | 9 | PNGs are real PNGs (magic-byte `\x89PNG\r\n\x1a\n`) | adversarial |
 | 10 | Requirements.txt pins pandas/numpy/matplotlib/scipy | adversarial |
 | 11 | Study-hours r within plausible range (0.55–0.80) | adversarial |
-| 12 | Sleep-hours r within null range (|r| < 0.15) | adversarial |
+| 12 | Sleep-hours r within null range (\|r\| < 0.15) | adversarial |
 | 13 | Exam scores within [0, 100] | adversarial |
 | 14 | Study hours nonnegative (generator clips at 0) | adversarial |
 | 15 | Sleep hours within [3, 10] (generator clip bounds) | adversarial |
