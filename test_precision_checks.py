@@ -197,16 +197,34 @@ def test_arbitrary_color_chart_exists_and_differs_from_deliberate():
     assert arb != delib, "arbitrary and deliberate color charts are identical"
 
 
-def test_notebook_contains_finding_with_actual_number():
-    """The notebook must contain a finding that cites a specific Pearson r value,
-    not just a vague 'correlated' impression."""
+def test_notebook_finds_computed_not_hand_typed():
+    """Numbers must come from code outputs (streams) via f-strings, not from hand-typed markdown.
+    This is the direct fix for Friday's 0.42 vs 0.41 mismatch: the audit ensures
+    Pearson r appears in EXECUTED OUTPUTS and the CLAIMS dict + f-string paragraph exist,
+    rather than checking for hardcoded numbers in markdown."""
     nb = json.loads((ROOT / "week6_day1_precision_lab.ipynb").read_text())
-    all_md = " ".join(
+    streams = "".join(
+        "".join(out.get("text", []))
+        for cell in nb["cells"] if cell["cell_type"] == "code"
+        for out in cell.get("outputs", []) if out.get("output_type") == "stream"
+    )
+    code_all = "\n".join(
+        "".join(c.get("source", []))
+        for c in nb["cells"] if c["cell_type"] == "code"
+    )
+    md_all = "\n".join(
         "".join(c.get("source", []))
         for c in nb["cells"] if c["cell_type"] == "markdown"
     )
-    has_r_value = any(tok in all_md for tok in ("r = 0.", "r =", "r ≈", "r="))
-    assert has_r_value, "no specific r value found in findings"
+    # r values must appear in code outputs (printed by f-strings, not typed in markdown)
+    has_r_in_streams = "r = " in streams or "r=" in streams or "Pearson r" in streams
+    assert has_r_in_streams, "no Pearson r value found in code outputs"
+    # CLAIMS dict + f-string paragraph must exist (discipline)
+    assert "CLAIMS = {" in code_all, "CLAIMS dict missing — numbers may be hand-typed"
+    assert 'f\"Across' in code_all or "f Across" in code_all, "f-string paragraph missing"
+    # Hand-typed r values in markdown = the Friday mistake — must NOT exist
+    assert "r ≈ 0." not in md_all, "hand-typed r value found in markdown (Friday mistake!)"
+    assert "r ≈ −" not in md_all, "hand-typed r value found in markdown (Friday mistake!)"
 
 
 def test_notebook_shuffle_test_appears():
