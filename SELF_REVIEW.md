@@ -38,7 +38,7 @@ by a notebook cell reference or a test assertion — nothing is "should work".
 | Color deliberate, bars in natural order | PASS | Step 7: arbitrary (anti-pattern) + deliberate (single hue, one accent); A→B→C order maintained |
 | Self-audit table: 3 claimed vs 3 recomputed | PASS | Step 8: `np.corrcoef` + boolean-mask methods; `ALL THREE MATCH` asserted |
 | All 8 PNGs exist and are valid images | PASS | `test_all_required_pngs_exist_and_are_valid_images` passes; all >5 KB |
-| Tests pass | PASS | 8/8 in `test_precision_checks.py` |
+| Tests pass | PASS | 21/21 in `test_precision_checks.py` (8 structural + 13 adversarial) |
 
 ## What Each Chart Does and Why It Is the Right Tool
 

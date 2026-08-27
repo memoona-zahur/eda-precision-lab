@@ -36,7 +36,7 @@ This lab was built deliberately to close two specific gaps from the Week 05 Frid
 | 6 | Arbitrary vs deliberate color; natural order explained | `chart_color_arbitrary.png` / `chart_color_deliberate.png` |
 | 7 | Self-audit: 3 claimed numbers vs 3 independent recomputations | in-notebook table |
 
-All 8 charts element-collision-guarded before save.
+The Step 6 collision exercise is guarded programmatically — `chart_collision_fixed.png` has a bounding-box assertion proving zero annotation/legend overlap before save, and the trap chart now runs the same title-overlap assertion. Other charts are checked structurally (axis labels, titles, PNG validity) rather than with per-chart overlap assertions.
 
 ## How to reproduce
 
