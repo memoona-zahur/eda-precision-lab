@@ -22,7 +22,7 @@ attendance_pct = rng.normal(85, 10, size=n).clip(40, 100).round(1)
 
 noise = rng.normal(0, 8, size=n)
 section_bonus = pd.Series(class_section).map({"A": 0, "B": 0, "C": 4}).values
-exam_score = (50 + 2.6 * study_hours + 0.15 * attendance_pct + section_bonus + noise).clip(0, 100).round(1)
+exam_score = (50 + 2.6*study_hours + 0.15*attendance_pct + section_bonus + noise).clip(0, 100).round(1)
 
 students = pd.DataFrame({
     "student_id": np.arange(1, n + 1),
