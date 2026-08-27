@@ -76,8 +76,8 @@ by a notebook cell reference or a test assertion — nothing is "should work".
 - The pedagogical charts (trap, broken/fixed, arbitrary/deliberate) make the lessons visceral, not just theoretical.
 
 **Would strengthen with more time:**
-- The test suite has 8 targeted checks but could expand to adversarial territory (PNG magic-byte validation, requirements pin enforcement, statistical canary for expected correlation ranges) following the Week 5 pattern.
-- A standalone `technical_summary.md` for non-technical readers would complete the documentation set.
-- The README could include a problem/fix mapping table like the reference repo's.
+- The test suite already has 21 checks (8 structural + 13 adversarial) covering determinism, PNG magic-byte validation, statistical canaries, collision-pair difference, f-string discipline, and shuffle-test presence. Within the current adversarial layer the canaries could be pushed further (e.g., stricter guardrails on generator bounds), but the existing set already exceeds the Week 5 pattern.
+- A standalone `technical_summary.md` for non-technical readers is now included in the documentation set.
+- The README includes a problem/fix mapping and a deliverables table like the reference repo's.
 
 Everything required by the task document is complete, verified, and passing.

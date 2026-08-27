@@ -22,7 +22,7 @@ This lab was built deliberately to close two specific gaps from the Week 05 Frid
 2. **Sleep hours show no meaningful relationship** — Pearson r = -0.022 (p = 0.60); the honest conclusion is that sleep is not a driver of scores in this dataset.
 3. **Section C outscores A and B by ~4 points** — mean scores: A = 87.6, B = 87.0, C = 91.4; the +4 bonus was designed into the generator and surfaces clearly.
 4. **A line chart on categories fabricates movement** — the same three means drawn as a connected line imply a "climb from B to C" that the bar chart correctly refuses to make.
-5. **Layout collisions ship silently** — an annotation on a legend looks fine inline but breaks in the saved PNG; every chart was checked programmatically.
+5. **Layout collisions ship silently** — an annotation on a legend looks fine inline but breaks in the saved PNG; the collision exercise is checked programmatically (bounding-box assertion), and the trap chart additionally runs a title-overlap assertion.
 
 ## Deliverables
 
