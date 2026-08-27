@@ -8,7 +8,7 @@ A log of **600 students** across three class sections (A, B, C), recording five 
 
 ## What we were testing
 
-Two questions that matter in any educational dataset:
+Three questions that matter in any educational dataset:
 
 1. **Do students who study more actually score higher?** — and if so, how strongly, as a number rather than an impression.
 2. **Does sleep matter for exam performance?** — and if it doesn't, can we say that honestly rather than quietly dropping the chart.
